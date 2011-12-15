@@ -13,6 +13,7 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
+        "com.shorrockin" %% "cascal" % "2.0-si-SNAPSHOT",
         // testing
         "junit" % "junit" % "4.8.1" % "test",
         "org.specs2" %% "specs2" % "1.6.1" % "test",
