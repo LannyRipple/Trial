@@ -15,6 +15,6 @@ object Example {
         val cols = Cass.pool.borrow {
             session.list( Keyspace("Trail") \ "People" \ "1" )
         }
-        println cols.mkString("\n")
+        println(cols.mkString("\n"))
     }
 }
