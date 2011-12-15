@@ -1,3 +1,5 @@
+package me.remi.Trial
+
 sealed abstract class Tree[+T]{
 
   def addValue[U >: T <% Ordered[U]](x: U): Tree[U]
@@ -52,6 +54,18 @@ object Tree {
     for (arg<-l) result = result.addValue(arg)
     result
   }
+
+  def from[U <% Ordered[U]](xs: TraversableOnce[U]): Tree[U] = {
+  @annotation.tailrec
+  def step(iter: Iterator[U], z: Tree[U]): Tree[U] = {
+    if (!iter.hasNext) z
+    else {
+      val u = iter.next()
+      step(iter, z.addValue(u))
+    }
+  }
+  step(xs.toIterator, End)
+}
 
   def cBalanced[T](n:Int, x: T): List[Tree[T]] = n match {
     case 0 => List(End)
