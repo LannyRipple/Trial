@@ -119,9 +119,10 @@ abstract class CircuitSimulation extends BasicCircuitSimulation {
     halfAdder(b,s,sum,c2)
     orGate(c1,c2,cout)
   }
+
 }
 
-object MySimulation extends CircuitSimulation {
+object MyThirdSimulation extends CircuitSimulation{
   def InverterDelay = 1
   def AndGateDelay = 3
   def OrGateDelay = 5
@@ -132,7 +133,13 @@ object MySimulation extends CircuitSimulation {
     probe("carry", carry)
     halfAdder(input1, input2, sum, carry)
     input1 setSignal true
+    run()
+
+
     input2 setSignal true
+    run()
+
+
   }
 }
 
